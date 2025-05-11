@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <title>Lamborghini Technology | Italian Supercars</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap');
+        
+        :root {
+            --lamborghini-yellow: #ffcc00;
+            --lamborghini-black: #111111;
+            --text-light: #ffffff;
+            --text-dark: #333333;
+            --accent-gray: #e0e0e0;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f8f8f8;
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+        
+        header {
+            background-color: var(--lamborghini-black);
+            padding: 20px 0;
+            text-align: center;
+            position: relative;
+            border-bottom: 4px solid var(--lamborghini-yellow);
+        }
+        
+        .logo {
+            height: 50px;
+            margin-bottom: 10px;
+            filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+        }
+        
+        header h1 {
+            color: var(--lamborghini-yellow);
+            font-weight: 700;
+            letter-spacing: 3px;
+            font-size: 28px;
+            text-transform: uppercase;
+            margin: 0;
+            text-shadow: 0px 0px 10px rgba(255, 204, 0, 0.3);
+        }
+        
+        header p {
+            color: var(--text-light);
+            font-size: 14px;
+            letter-spacing: 1px;
+            margin-top: 5px;
+        }
+        
+        nav {
+            background-color: rgba(0, 0, 0, 0.9);
+            padding: 15px 0;
+            overflow-x: auto;
+            -webkit-overflow-scrolling: touch;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 204, 0, 0.3);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .nav-container {
+            display: flex;
+            justify-content: center;
+            min-width: max-content;
+            padding: 0 20px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            gap: clamp(20px, 4vw, 40px);
+        }
+        
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: clamp(16px, 2vw, 18px);
+            padding: 10px 5px;
+            white-space: nowrap;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+        }
+        
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--lamborghini-yellow);
+            transition: width 0.3s ease;
+        }
+        
+        nav a:hover {
+            color: var(--lamborghini-yellow);
+        }
+        
+        nav a:hover::after {
+            width: 100%;
+        }
+        
+        .nav-active {
+            color: var(--lamborghini-yellow) !important;
+        }
+        
+        .nav-active::after {
+            width: 100%;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        .hero {
+            background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('images/background.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            height: 400px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 60px;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 100px;
+            background: linear-gradient(to top, rgba(248,248,248,1), transparent);
+            z-index: 2;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 3;
+            padding: 0 20px;
+        }
+        
+        .hero h2 {
+            font-size: clamp(32px, 5vw, 48px);
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 6px;
+            margin-bottom: 15px;
+            text-shadow: 2px 2px 8px rgba(0,0,0,0.6);
+        }
+        
+        section {
+            margin-bottom: 80px;
+        }
+        
+        section h2 {
+            font-size: 32px;
+            font-weight: 700;
+            margin-bottom: 40px;
+            text-align: center;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+            padding-bottom: 15px;
+        }
+        
+        section h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--lamborghini-yellow);
+        }
+        
+        .tech-feature {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            align-items: center;
+            margin-bottom: 40px;
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        
+        .tech-feature.reverse {
+            flex-direction: row-reverse;
+        }
+        
+        .tech-image {
+            flex: 1;
+            min-width: 300px;
+            padding: 15px;
+        }
+        
+        .tech-image img {
+            width: 100%;
+            border-radius: 5px;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease;
+        }
+        
+        .tech-image img:hover {
+            transform: scale(1.03);
+        }
+        
+        .tech-description {
+            flex: 1;
+            min-width: 300px;
+            padding: 15px;
+        }
+        
+        .tech-description h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: var(--lamborghini-black);
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .tech-description h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--lamborghini-yellow);
+        }
+        
+        .tech-description ul {
+            margin: 15px 0;
+            padding-left: 20px;
+        }
+        
+        .tech-description li {
+            margin: 10px 0;
+            position: relative;
+            padding-left: 15px;
+        }
+        
+        .tech-description li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 8px;
+            height: 8px;
+            background-color: var(--lamborghini-yellow);
+            border-radius: 50%;
+        }
+        
+        .tech-highlight {
+            background: #fffae6;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            margin-top: 25px;
+            border-left: 4px solid var(--lamborghini-yellow);
+        }
+        
+        .back-button {
+            display: inline-block;
+            padding: 12px 25px;
+            background-color: var(--lamborghini-black);
+            color: var(--lamborghini-yellow);
+            text-decoration: none;
+            border-radius: 4px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 14px;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        .back-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background-color: var(--lamborghini-yellow);
+            transition: all 0.4s ease;
+            z-index: -1;
+        }
+        
+        .back-button:hover {
+            color: var(--lamborghini-black);
+        }
+        
+        .back-button:hover::before {
+            left: 0;
+        }
+        
+        .tech-section {
+            margin-bottom: 60px;
+        }
+        
+        footer {
+            background-color: var(--lamborghini-black);
+            color: #999;
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 80px;
+            border-top: 4px solid var(--lamborghini-yellow);
+        }
+        
+        .social-media {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: rgba(255, 255, 255, 0.1);
+            color: var(--lamborghini-yellow);
+            border-radius: 50%;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            font-size: 18px;
+        }
+        
+        .social-icon:hover {
+            background-color: var(--lamborghini-yellow);
+            color: var(--lamborghini-black);
+            transform: translateY(-3px);
+        }
+        
+        footer p {
+            margin: 5px 0;
+            font-size: 14px;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 1200px) {
+            .tech-feature, .tech-feature.reverse {
+                padding: 30px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .hero {
+                height: 300px;
+            }
+            
+            .tech-feature, .tech-feature.reverse {
+                flex-direction: column;
+                text-align: center;
+                padding: 30px;
+            }
+            
+            .tech-description h3::after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            
+            .tech-feature ul {
+                text-align: left;
+            }
+            
+            section h2 {
+                font-size: 28px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .hero h2 {
+                font-size: 28px;
+            }
+            
+            section h2 {
+                font-size: 26px;
+            }
+            
+            .tech-feature, .tech-feature.reverse {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="images/th.jpg" alt="Lamborghini Logo" class="logo">
+        <h1>LAMBORGHINI</h1>
+        <p>Italian Excellence in Automotive Engineering</p>
+    </header>
+    
+    <nav>
+        <div class="nav-container">
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="index.html#models">Models</a></li>
+                <li><a href="index.html#history">History</a></li>
+                <li><a href="#technology" class="nav-active">Technology</a></li>
+                <li><a href="contactus.html">Contact Us</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <div class="container">
+        <section id="technology" class="hero">
+            <div class="hero-content">
+                <h2>Cutting-Edge Automotive Technology</h2>
+            </div>
+        </section>
+        
+        <section class="tech-section">
+            <h2>Carbon Fiber Innovation</h2>
+            
+            <div class="tech-feature">
+                <div class="tech-image">
+                    <img src="images/carbon.jpg" alt="Lamborghini Carbon Fiber Technology">
+                </div>
+                <div class="tech-description">
+                    <h3>Forged Composite Technology</h3>
+                    <p>Lamborghini has pioneered the use of carbon fiber reinforced polymer (CFRP) in automotive applications. The patented Forged Composite technology allows for complex shapes to be created with carbon fiber, reducing weight while increasing strength and rigidity.</p>
+                    <p>This technology was first introduced in the Sesto Elemento and is now used throughout Lamborghini's lineup, including in the monocoque chassis of the Aventador and Revuelto.</p>
+                    <div class="tech-highlight">
+                        <p><strong>Key Benefit:</strong> The Aventador's carbon fiber monocoque weighs just 147.5 kg (325 lbs) while offering exceptional rigidity and safety.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="tech-section">
+            <h2>Aerodynamics</h2>
+            
+            <div class="tech-feature reverse">
+                <div class="tech-image">
+                    <img src="images/ala.jpg" alt="Lamborghini Aerodynamics">
+                </div>
+                <div class="tech-description">
+                    <h3>ALA (Aerodinamica Lamborghini Attiva)</h3>
+                    <p>Lamborghini's active aerodynamics system uses electronically controlled flaps and channels to optimize downforce and reduce drag depending on driving conditions. The system can:</p>
+                    <ul>
+                        <li>Increase downforce by up to 750% when needed for cornering</li>
+                        <li>Reduce drag by 20% for straight-line speed</li>
+                        <li>Activate air brakes for improved stopping power</li>
+                    </ul>
+                    <p>First introduced on the Huracán Performante, ALA has since been refined for the Aventador SVJ and Revuelto models.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section class="tech-section">
+            <h2>Powertrain Technology</h2>
+            
+            <div class="tech-feature">
+                <div class="tech-image">
+                    <img src="images/hybrid-v12.jpg" alt="Lamborghini Hybrid Technology">
+                </div>
+                <div class="tech-description">
+                    <h3>Hybrid V12 Architecture</h3>
+                    <p>The Revuelto represents Lamborghini's first hybrid production car, featuring:</p>
+                    <ul>
+                        <li>6.5L naturally aspirated V12 engine (814 hp)</li>
+                        <li>Three electric motors (combined 218 hp)</li>
+                        <li>Total system output of 1,015 hp</li>
+                        <li>All-wheel drive with torque vectoring</li>
+                        <li>7-speed dual-clutch transmission</li>
+                    </ul>
+                    <div class="tech-highlight">
+                        <p><strong>Innovation:</strong> The system can operate in pure electric mode for up to 10 km (6 miles), while maintaining the emotional sound and performance of Lamborghini's legendary V12.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <section class="tech-section">
+            <h2>Vehicle Dynamics</h2>
+            
+            <div class="tech-feature reverse">
+                <div class="tech-image">
+                    <img src="images/ldvi.jpg" alt="Lamborghini LDVI System">
+                </div>
+                <div class="tech-description">
+                    <h3>LDVI (Lamborghini Dinamica Veicolo Integrata)</h3>
+                    <p>This integrated vehicle dynamics system acts as the "brain" of modern Lamborghinis, coordinating:</p>
+                    <ul>
+                        <li>All-wheel drive torque distribution</li>
+                        <li>Active aerodynamics</li>
+                        <li>Four-wheel steering</li>
+                        <li>Magnetic suspension damping</li>
+                        <li>Stability control systems</li>
+                    </ul>
+                    <p>The system processes data from multiple sensors at up to 1,000 times per second to optimize vehicle behavior for any driving situation.</p>
+                </div>
+            </div>
+        </section>
+        
+        <section class="tech-section">
+            <h2>Infotainment & Connectivity</h2>
+            
+            <div class="tech-feature">
+                <div class="tech-image">
+                    <img src="images/interface.jpg" alt="Lamborghini Infotainment">
+                </div>
+                <div class="tech-description">
+                    <h3>Human-Machine Interface</h3>
+                    <p>Lamborghini's latest infotainment systems combine cutting-edge technology with driver-focused design:</p>
+                    <ul>
+                        <li>12.3" digital instrument cluster with multiple display modes</li>
+                        <li>8.4" or 12.3" touchscreen (depending on model)</li>
+                        <li>Advanced voice recognition</li>
+                        <li>Over-the-air software updates</li>
+                        <li>Integrated telemetry systems for track driving</li>
+                    </ul>
+                    <p>The system maintains Lamborghini's focus on the driving experience while providing modern connectivity features.</p>
+                </div>
+            </div>
+        </section>
+        
+        <div style="text-align: center; margin-top: 30px;">
+            <a href="index.html#technology" class="back-button">Back to Main Page</a>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="social-media">
+            <a href="https://www.facebook.com/Lamborghini" target="_blank" aria-label="Facebook" class="social-icon">
+                <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="https://www.instagram.com/lamborghini/" target="_blank" aria-label="Instagram" class="social-icon">
+                <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://twitter.com/Lamborghini" target="_blank" aria-label="Twitter" class="social-icon">
+                <i class="fab fa-twitter"></i>
+            </a>
+            <a href="https://www.youtube.com/user/lamborghini" target="_blank" aria-label="YouTube" class="social-icon">
+                <i class="fab fa-youtube"></i>
+            </a>
+            <a href="https://www.linkedin.com/company/automobili-lamborghini-s.p.a." target="_blank" aria-label="LinkedIn" class="social-icon">
+                <i class="fab fa-linkedin-in"></i>
+            </a>
+        </div>
+        <p>&copy; 2023 Lamborghini Fan Site. Not affiliated with Automobili Lamborghini.</p>
+        <p>For educational purposes only.</p>
+    </footer>
+    
+    <script>
+    // Update active nav link on scroll
+    window.addEventListener('scroll', () => {
+        let current = '';
+        const sections = document.querySelectorAll('section');
+        const navOffset = 100;
+        
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop - navOffset;
+            const sectionHeight = section.clientHeight;
+            
+            if (pageYOffset >= sectionTop && pageYOffset < sectionTop + sectionHeight) {
+                current = section.getAttribute('id');
+            }
+        });
+    });
+    
+    // Animate tech features on scroll
+    const techFeatures = document.querySelectorAll('.tech-feature');
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.opacity = 1;
+                entry.target.style.transform = 'translateY(0)';
+            }
+        });
+    }, { threshold: 0.3 });
+    
+    techFeatures.forEach(feature => {
+        feature.style.opacity = 0;
+        feature.style.transform = 'translateY(20px)';
+        feature.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        observer.observe(feature);
+    });
+    </script>
+</body>
+</html>
